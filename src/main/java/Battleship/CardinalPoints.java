@@ -1,2 +1,8 @@
-package Battleship;public class CardinalPoints {
+package Battleship;
+
+public enum CardinalPoints {
+    NORTH,
+    SOUTH,
+    EAST,
+    WEST
 }

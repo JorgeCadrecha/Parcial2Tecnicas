@@ -40,7 +40,27 @@ public class User {
         setAlive(false);
     }
 
-    public boolean attack(){return false;}
+    public boolean attack(Point shotPoint, User user){
+        boolean hit = false;
+        try {
+            user.getShot(shotPoint);
+            for (Ship ship : user.getShips()) {
+                if (!ship.isSunk()) {
+                    if (ship.getShot(shotPoint)) {
+                        hit = true;
+                        break;
+                    }
+                }
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return hit;
+    }
 
-    public void getShot(){}
+    public void getShot(Point shotPoint){
+        for (Ship ship : this.ships) {
+            ship.getShot(shotPoint);
+        }
+    }
 }

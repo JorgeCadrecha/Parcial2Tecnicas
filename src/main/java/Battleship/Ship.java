@@ -62,4 +62,32 @@ public class Ship {
     public void setSunk(boolean sunk) {
         isSunk = sunk;
     }
+
+    public boolean isAlreadyHit(Point point) {
+        int x = point.get_x();
+        int y = point.get_y();
+        if (direction == CardinalPoints.NORTH) {
+            return x == start.get_x() && y >= start.get_y() && y <= end.get_y();
+        } else if (direction == CardinalPoints.SOUTH) {
+            return x == start.get_x() && y >= end.get_y() && y <= start.get_y();
+        } else if (direction == CardinalPoints.EAST) {
+            return y == start.get_y() && x >= start.get_x() && x <= end.get_x();
+        } else {
+            // WEST
+            return y == start.get_y() && x >= end.get_x() && x <= start.get_x();
+        }
+    }
+    public boolean getShot(Point shotPoint) {
+        if (isSunk) {
+            return false;
+        }
+        if (isAlreadyHit(shotPoint)) {
+            hits++;
+            if (hits == size) {
+                isSunk = true;
+            }
+            return true;
+        }
+        return false;
+    }
 }

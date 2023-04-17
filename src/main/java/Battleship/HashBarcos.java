@@ -23,15 +23,6 @@ public class HashBarcos {
         return indice;
     }
 
-    public void cargarTipoBarco(String tipo) {
-        int indice = hash1(tipo);
-        if (!tabla1.containsKey(tipo)) {
-            tabla1.put(tipo, new HashMap<Integer, Barco>());
-            System.out.println("Se ha creado una nueva tabla para el tipo de barco " + tipo);
-        } else {
-            System.out.println("La tabla para el tipo de barco " + tipo + " ya existe");
-        }
-    }
     public void cargarBarco(int numero, String nombre, String tipo) {
         Barco barco = new Barco(numero, nombre, tipo);
         int indice1 = hash1(tipo);

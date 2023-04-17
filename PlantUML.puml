@@ -1,0 +1,83 @@
+@startuml
+class User {
+alive : boolean
+ships : List<Ships>
+init (List<Ships>): void
+attack(Point shot_point,User user): void
+get_shot(Point shot_point): void
+is_alive(): void
+die():void
+}
+
+class Ship{
+size : Int
+start : Point
+end: Point
+direction : CardinalPoints
+hits : Int
+isSunk : Boolean
+
+Ship() 
+isAlreadyHit() : boolean
+getShot() : boolean
+}
+
+class Point{
+x : Int
+y : Int
+}
+
+class CardinalPoints_Enum{
+NORTH
+SOUTH
+EAST
+WEST
+}
+
+class Battleship {
+size : Int
+hits : Int
+}
+
+class Frigate {
+size : Int
+hits : Int
+}
+
+class Canoe {
+size : Int
+hits : Int
+}
+
+class Main{
+Main() : void
+Map() :void
+}
+
+class HashBarco{
+tabla1 : HashMap
+tabla2 : HashMap
+tabla3 : HashMap
+
+hash1() : Int
+hash2() : Int
+hash3() : Int
+cargarBarco() : void
+}
+
+class Barco{
+Barco()
+}
+
+Ship <-- Canoe
+Ship <-- Frigate
+Ship <-- Battleship
+Ship <-- CardinalPoints_Enum
+Ship <-- Point
+
+Ship --> User
+User --> Main
+
+HashBarco --> Main
+Barco --> HashBarco
+@enduml
